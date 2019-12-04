@@ -1,5 +1,5 @@
 # Day Two
-
+something = True
 # create an array of machine codes
 machine_codes = []
 
@@ -8,6 +8,8 @@ lines = list(open('input.txt', 'r'))
 string = lines[0]
 array_of_codes_str = string.split(',')
 array_of_codes = [int(i) for i in array_of_codes_str] 
+
+reset_to = array_of_codes
 
 def add(one_position):
     result = array_of_codes[array_of_codes[one_position + 1]] + array_of_codes[array_of_codes [one_position + 2]]
@@ -20,11 +22,10 @@ def multiply(two_position):
 
 
 def execute(position):
+    global something
     if position > len(array_of_codes):
         print("out of range ??")
-        print(position)
-        print(array_of_codes)
-        quit()
+        something = False
 
     if array_of_codes[position] == 1:
         add(position)
@@ -34,13 +35,29 @@ def execute(position):
         #halt program
         print("HALT: ")
         print (array_of_codes[0])
-        quit()
+        something = False
+        # quit() # Don't quit but stop loop ?!?!?
 
 array_of_codes[1] = 12
 array_of_codes[2] = 2
 
 current_position = 0
 
-while True:
+while something == True:
     execute(current_position)
     current_position += 4
+
+
+
+for verb in range (0, 100):
+    for noun in range (0, 100):
+        array_of_codes = reset_to
+        array_of_codes[1] = noun
+        array_of_codes[2] = verb
+        current_position = 0
+        something = True
+        while something == True:
+            execute(current_position)
+            current_position += 4
+
+
