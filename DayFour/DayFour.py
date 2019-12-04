@@ -36,15 +36,16 @@ def hasExactlyTwoTheSameInARow(c):
 
 counter = 0
 for password in range(lower_bound, upper_bound + 1):
-    #possible_answers.append(password)
-    if hasTwoTheSameInARow(password) & neverDecreases(password):
-        counter += 1
+    if neverDecreases(password):
+        if hasTwoTheSameInARow(password):
+            counter += 1
 print (counter)
 
 # PART TWO
 
 counter_two = 0
 for password in range(lower_bound, upper_bound + 1):
-    if hasExactlyTwoTheSameInARow(password) & neverDecreases(password):
-        counter_two += 1
+    if neverDecreases(password):
+        if hasExactlyTwoTheSameInARow(password):
+            counter_two += 1
 print (counter_two)
