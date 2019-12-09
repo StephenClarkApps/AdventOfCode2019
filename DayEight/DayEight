@@ -1,0 +1,53 @@
+# Day Eight
+
+pixels_wide = 25
+pixels_tall = 6
+
+lines = list(open('input.txt', 'r'))
+string = lines[0]
+
+layers = {}
+
+characters_per_layer = pixels_tall * pixels_wide
+
+seperated_chars_by_layer = [string[i:i+characters_per_layer] for i in range(0, len(string), characters_per_layer)]
+
+for x in range (0, len(seperated_chars_by_layer)):
+    layers[x] = seperated_chars_by_layer[x]
+
+
+# PART ONE
+
+# layer_with_least_zeros = 0
+# min_num_of_zeros = 99999
+# counter = 0
+
+# for some_layer in layers:
+#     if seperated_chars_by_layer[counter].count('0') < min_num_of_zeros:
+#         layer_with_least_zeros = counter
+#         min_num_of_zeros = seperated_chars_by_layer[counter].count('0')
+
+#     counter += 1
+
+# print (layer_with_least_zeros)
+
+# print (layers[layer_with_least_zeros].count('1') * layers[layer_with_least_zeros].count('2'))
+
+
+# PART TWO
+
+# if you find a two get value from next layer down 
+
+output_test = list('ONE TWO')
+for some_layer in layers:
+    if some_layer == 0:
+        output_test = list(seperated_chars_by_layer[0])
+    else:
+        character_counter = 0
+        for char in seperated_chars_by_layer[some_layer]:
+            if (output_test[character_counter] == '2'):
+                output_test[character_counter] = char
+            character_counter += 1
+
+stringgy = str(output_test)
+print (stringgy)

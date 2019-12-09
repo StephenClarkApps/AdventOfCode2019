@@ -1,5 +1,4 @@
 # Day Four
-
 lines = list(open('input.txt', 'r'))
 input_range = lines[0].split('-')
 
@@ -33,7 +32,6 @@ def hasExactlyTwoTheSameInARow(c):
     return False
 
 # PART ONE
-
 counter = 0
 for password in range(lower_bound, upper_bound + 1):
     if neverDecreases(password):
@@ -42,7 +40,6 @@ for password in range(lower_bound, upper_bound + 1):
 print (counter)
 
 # PART TWO
-
 counter_two = 0
 for password in range(lower_bound, upper_bound + 1):
     if neverDecreases(password):
